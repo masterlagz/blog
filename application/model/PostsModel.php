@@ -130,11 +130,38 @@ class PostsModel extends Model{
           WHERE
             " . $this->table . ".id = " . $params["id"] . "
         ";
-        print_r( $sql );
+        
         $result = $this->db->query( $sql );
 
         if (!$result) {
             throw new Exception("Unable to update new post!");
+        }
+
+        return $result;
+    }
+
+	/**
+     * deletePosts
+     * Method that deletes user post
+     *
+     * @param $params
+     * @throws Exception
+     * @return int insert_id
+     */
+    public function deletePosts( $params ){
+        $this->validateReadLists( $params["id"] );
+
+        $sql = "
+          DELETE FROM 
+            " . $this->table . "
+          WHERE
+            " . $this->table . ".id = " . $params["id"] . "
+        ";
+        
+        $result = $this->db->query( $sql );
+
+        if (!$result) {
+            throw new Exception("Unable to delete new post!");
         }
 
         return $result;
@@ -174,7 +201,7 @@ class PostsModel extends Model{
      */
     private function validateReadLists( $id ){
         if (isset($id) !== false && !is_int($id)) {
-            throw new Exception("Invalid user!");
+            throw new Exception("Invalid parameter ID!");
         }
     }
 }

@@ -24,3 +24,20 @@ form#post_edit a.btn{
     margin-left:5px;
     cursor:pointer;
 }
+
+table#posts a.edit{
+	float:left;
+	background:#dc3545 url("../images/edit.png")  no-repeat;
+}
+table#posts a.delete{
+	float:right;
+	background:#dc3545 url("../images/delete.png")  no-repeat;
+}
+table#posts a.edit,
+table#posts a.delete{
+	display:block;
+	width:16px;
+	height:16px;
+	background-size:contain;
+}
+

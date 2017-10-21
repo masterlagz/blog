@@ -3,7 +3,13 @@
 </div>
 
 <div class="row">
-    <table class="table" width="100%">
+	<?php if ($this->success_message) { ?>
+	<div class="col">
+		<div class="alert alert-success" role="alert"><?php echo $this->success_message; ?></div>
+	</div>
+	<?php } ?>
+
+    <table id="posts" class="table" width="100%">
         <thead>
             <tr>
                 <th width="5%">&nbsp;</th>
@@ -20,7 +26,10 @@
                 <td><?php echo $post->title; ?></td>
                 <td><?php echo substr($post->content, 0, 50); ?></td>
                 <td><?php echo ($post->status == 1 ? "Draft" : "Published"); ?></td>
-                <td><a href="<?php echo Config::BASE_URL; ?>/posts/edit?id=<?php echo $post->id; ?>" id="<?php echo $post->id; ?>" class="btn btn-sm btn-danger edit"><img src="<?php echo Config::BASE_URL; ?>/public/images/edit.png" style="width:20px;"></td>
+                <td>
+					<a href="<?php echo Config::BASE_URL; ?>/posts/edit?id=<?php echo $post->id; ?>" id="<?php echo $post->id; ?>" class="btn btn-sm btn-danger edit">&nbsp;</a>
+					<a href="<?php echo Config::BASE_URL; ?>/posts/delete?id=<?php echo $post->id; ?>" id="<?php echo $post->id; ?>" class="btn btn-sm btn-danger delete">&nbsp;</a>
+				</td>
             </tr>
         <?php } ?>
         </tbody>

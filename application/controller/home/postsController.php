@@ -40,9 +40,13 @@ class PostsController extends Controller {
             // get the current user
             $user = $this->userModel->getUserById((int)$_SESSION["user_id"]);
 
-            // get all the result set by current user
-            $this->results = $this->postModel->readListByUserId((int)$user->id, $page, $limit);
-            $this->pagination = pagination("posts", $page, $this->results);
+			// get all the result set by current user
+			$this->results = $this->postModel->readListByUserId((int)$user->id, $page, $limit);
+			$this->pagination = pagination("posts", $page, $this->results);
+
+			if (isset($_GET["deleted"]) !== false) {
+				$this->success_message = "Post Successfully Deleted!";
+			}
         } catch (Exception $e) {
             print_r( $e->getMessage() );
             exit;
@@ -141,8 +145,28 @@ class PostsController extends Controller {
             print_r( $e->getMessage() );
             exit;
         }
+    }
 
-        $this->render("user/posts-add.php");
+	/**
+     * deleteAction
+     * Method that deletes user post
+     *
+     * @return void
+     */
+    public function deleteAction(){
+        $post = ($_GET ? $_GET : "");
+		
+        try{
+            $params = array("id" => (int)$post["id"]);
+            $result = $this->postModel->deletePosts($params);
+			
+			if ($result) {
+               $this->redirect(Config::BASE_URL . "/posts?deleted=true");
+            }
+        } catch(Exception $e) {
+            print_r( $e->getMessage() );
+            exit;
+        }
     }
 }
 ?>
