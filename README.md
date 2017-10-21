@@ -7,7 +7,6 @@
 6. View user posts under 'Dashboard'
 
 # Create POST
-# ----------------------------------------------------------------
 1. View user posts under 'Dashboard'
 2. Click 'Add New' button (top right area of the page)
 3. Verify that you are in add post page
@@ -16,7 +15,6 @@
 6. Post status will remain as 'Draft' when draft button is clicked, otherwise 'Published'
 
 # Update POST
-# ----------------------------------------------------------------
 1. View user posts under 'Dashboard'
 2. Click 'Edit' button (right area on each post)
 3. Verify that you are in edit post page
