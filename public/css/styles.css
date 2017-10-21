@@ -1,0 +1,26 @@
+body{
+    padding-top:3.5rem;
+}
+.jumbotron, .row.posts{
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+dd{
+    margin-bottom:3.5rem;
+}
+a.edit{
+    padding:0;
+    line-height:0;
+}
+
+/** FORMS **/
+form input{
+    padding:7px;
+}
+form#post_add button,
+form#post_add a.btn,
+form#post_edit button,
+form#post_edit a.btn{
+    margin-left:5px;
+    cursor:pointer;
+}
